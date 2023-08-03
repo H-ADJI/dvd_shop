@@ -19,23 +19,15 @@ class Commands(str, Enum):
 
 
 def help():
-    print(
-        "To [bold]add[/bold] a movie to your cart use the [bold green]add[/bold green] command"
-    )
-    print(
-        "To [bold]empty your cart[/bold] use the [bold green]clear[/bold green] command"
-    )
-    print(
-        "To show the [bold]price[/bold] use the [bold green]price[/bold green] command"
-    )
+    print("To [bold]add[/bold] a movie to your cart use the [bold green]add[/bold green] command")
+    print("To [bold]empty your cart[/bold] use the [bold green]clear[/bold green] command")
+    print("To show the [bold]price[/bold] use the [bold green]price[/bold green] command")
 
     print("To list the products in your cart use the [bold green]list[/bold green] command")
 
     print("To abort the process use the [bold green]quit[/bold green] command")
 
-    print(
-        "To show the [bold]help menu[/bold] use the [bold green]help[/bold green] command"
-    )
+    print("To show the [bold]help menu[/bold] use the [bold green]help[/bold green] command")
 
 
 def startup():
@@ -78,6 +70,8 @@ def cli_entry_point():
             print(table)
         elif cmd == Commands.QUIT:
             break
-        else :
-            print("[bold red]Unsupported command[/bold red] use [bold green]help[/bold green] to know available commands")
+        else:
+            print(
+                "[bold red]Unsupported command[/bold red] use [bold green]help[/bold green] to know available commands"
+            )
         cmd = Prompt.ask("Command => ")
