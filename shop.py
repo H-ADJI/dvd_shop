@@ -9,10 +9,7 @@ class MarketingStrategy(ABC):
 
 
 class BackToTheFutureStrategy(MarketingStrategy):
-    """Back to the future sales strategy
-
-
-    """
+    """Back to the future sales strategy"""
 
     two_parts_sale = 0.9
     tree_parts_sale = 0.8
@@ -29,13 +26,13 @@ class BackToTheFutureStrategy(MarketingStrategy):
             float: final price after applying a sale strategy
         """
         products_number = len(products)
-        parts = set()
+        parts = []
         for product in products:
             if "back to the future" in product.lower():
                 movie_part = re.search(r"\d", product)
                 if movie_part:
-                    parts.add(int(movie_part.group()))
-        # how many back to the future sequel are ordered
+                    parts.append(int(movie_part.group()))
+        # how many back to the future are ordered
         bttf_count = len(parts)
 
         # full price without any sale strategy applied
@@ -43,9 +40,9 @@ class BackToTheFutureStrategy(MarketingStrategy):
             products_number - bttf_count
         ) * self.ordinary_dvd_price + bttf_count * self.back_to_the_future_price
 
-        if bttf_count == 2:
+        if len(set(parts)) == 2:
             return full_price * self.two_parts_sale
-        elif bttf_count > 2:
+        elif len(set(parts)) > 2:
             return full_price * self.tree_parts_sale
         return full_price
 
